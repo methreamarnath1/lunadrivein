@@ -63,7 +63,7 @@ export default function VisitUs() {
           <div className="visit-content">
             <div className="aspect-video bg-gray-800 rounded-lg overflow-hidden border border-amber-400">
               <img
-                src="/placeholder.svg?text=Map"
+                src="https://lh5.googleusercontent.com/p/AF1QipPz8CV2EZryRrenOUvPbNGceNwwA9t0fyCHN3S2=w408-h306-k-no"
                 alt="Location Map"
                 className="w-full h-full object-cover"
               />
