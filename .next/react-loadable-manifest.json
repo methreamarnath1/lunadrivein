@@ -1,1 +1,56 @@
-{}
+{
+  "app\\page.tsx -> ./components/contact": {
+    "id": "app\\page.tsx -> ./components/contact",
+    "files": [
+      "static/chunks/_app-pages-browser_app_components_contact_tsx.js"
+    ]
+  },
+  "app\\page.tsx -> ./components/cricket-arena": {
+    "id": "app\\page.tsx -> ./components/cricket-arena",
+    "files": [
+      "static/chunks/_app-pages-browser_app_components_cricket-arena_tsx.js"
+    ]
+  },
+  "app\\page.tsx -> ./components/footer": {
+    "id": "app\\page.tsx -> ./components/footer",
+    "files": [
+      "static/chunks/_app-pages-browser_app_components_footer_tsx.js"
+    ]
+  },
+  "app\\page.tsx -> ./components/gallery": {
+    "id": "app\\page.tsx -> ./components/gallery",
+    "files": [
+      "static/chunks/_app-pages-browser_app_components_gallery_tsx.js"
+    ]
+  },
+  "app\\page.tsx -> ./components/hero": {
+    "id": "app\\page.tsx -> ./components/hero",
+    "files": [
+      "static/chunks/_app-pages-browser_app_components_hero_tsx.js"
+    ]
+  },
+  "app\\page.tsx -> ./components/menu": {
+    "id": "app\\page.tsx -> ./components/menu",
+    "files": [
+      "static/chunks/_app-pages-browser_app_components_menu_tsx.js"
+    ]
+  },
+  "app\\page.tsx -> ./components/order-apps": {
+    "id": "app\\page.tsx -> ./components/order-apps",
+    "files": [
+      "static/chunks/_app-pages-browser_app_components_order-apps_tsx.js"
+    ]
+  },
+  "app\\page.tsx -> ./components/visit-us": {
+    "id": "app\\page.tsx -> ./components/visit-us",
+    "files": [
+      "static/chunks/_app-pages-browser_app_components_visit-us_tsx.js"
+    ]
+  },
+  "app\\page.tsx -> ./components/welcome": {
+    "id": "app\\page.tsx -> ./components/welcome",
+    "files": [
+      "static/chunks/_app-pages-browser_app_components_welcome_tsx.js"
+    ]
+  }
+}

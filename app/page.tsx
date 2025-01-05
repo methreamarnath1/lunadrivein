@@ -3,75 +3,35 @@
 import { useEffect, useRef } from 'react'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
-import LocomotiveScroll from 'locomotive-scroll'
-import Hero from './components/hero'
-import Welcome from './components/welcome'
-import Menu from './components/menu'
-import CricketArena from './components/cricket-arena'
-import OrderApps from './components/order-apps'
-import Gallery from './components/gallery'
-import VisitUs from './components/visit-us'
-import Contact from './components/contact'
-import Footer from './components/footer'
+import dynamic from 'next/dynamic'
 
-declare module 'locomotive-scroll' {
-  interface LocomotiveScroll {
-    scroll: {
-      instance: {
-        scroll: { y: number }
-      }
-    }
-    update: () => void
-    scrollTo: (target: number, options: { duration: number, disableLerp: boolean }) => void
-  }
-}
+// Dynamically import components
+const Hero = dynamic(() => import('./components/hero'))
+const Welcome = dynamic(() => import('./components/welcome'))
+const Menu = dynamic(() => import('./components/menu'))
+const CricketArena = dynamic(() => import('./components/cricket-arena'))
+const OrderApps = dynamic(() => import('./components/order-apps'))
+const Gallery = dynamic(() => import('./components/gallery'))
+const VisitUs = dynamic(() => import('./components/visit-us'))
+const Contact = dynamic(() => import('./components/contact'))
+const Footer = dynamic(() => import('./components/footer'))
 
-gsap.registerPlugin(ScrollTrigger)
-
-export default function Home() {
+function HomePage() {
   const containerRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
-    let locoScroll: LocomotiveScroll | null = null
+    gsap.registerPlugin(ScrollTrigger)
 
-    const initLocomotiveScroll = async () => {
-      locoScroll = new LocomotiveScroll({
-        el: containerRef.current!,
-        smooth: true,
-      })
-
-      locoScroll.on('scroll', ScrollTrigger.update)
-
-      ScrollTrigger.scrollerProxy(containerRef.current!, {
-        scrollTop(value) {
-          return arguments.length
-            ? locoScroll!.scrollTo(value, { duration: 0, disableLerp: true })
-            : locoScroll!.scroll.instance.scroll.y
-        },
-        getBoundingClientRect() {
-          return {
-            top: 0,
-            left: 0,
-            width: window.innerWidth,
-            height: window.innerHeight,
-          }
-        },
-        pinType: containerRef.current!.style.transform ? 'transform' : 'fixed',
-      })
-
-      ScrollTrigger.addEventListener('refresh', () => locoScroll!.update())
-
+    // Update ScrollTrigger on resize
+    const onResize = () => {
       ScrollTrigger.refresh()
     }
 
-    initLocomotiveScroll()
+    window.addEventListener('resize', onResize)
 
     return () => {
-      if (locoScroll) {
-        ScrollTrigger.removeEventListener('refresh', () => locoScroll!.update())
-        locoScroll.destroy()
-        ScrollTrigger.getAll().forEach(t => t.kill())
-      }
+      window.removeEventListener('resize', onResize)
+      ScrollTrigger.getAll().forEach(t => t.kill())
     }
   }, [])
 
@@ -79,7 +39,6 @@ export default function Home() {
     <main
       ref={containerRef}
       className="bg-black text-white"
-      data-scroll-container
     >
       <Hero />
       <Welcome />
@@ -94,3 +53,6 @@ export default function Home() {
   )
 }
 
+export default dynamic(() => Promise.resolve(HomePage), {
+  ssr: false
+})
